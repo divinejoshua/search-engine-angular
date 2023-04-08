@@ -19,14 +19,18 @@
   padding-right: 14px;
 }
 
-.form-control{
-  height: 50px;
-}
 .clearfix {
   overflow: auto;
 }
 
 .form-searchbox-home{
   width: 100%;
+  height: 50px;
+  text-decoration: none !important;
+}
+
+.form-searchbox-search{
+  width: 100%;
+  height: 40px;
   text-decoration: none !important;
 }
