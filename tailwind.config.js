@@ -20,11 +20,11 @@ module.exports = {
       },
     },
     fontFamily: {
-      'sans': ['DM Sans', 'DM Sans',],
-      'serif': ['DM Sans', 'DM Sans',],
-      'mono': ['DM Sans', 'DM Sans',],
-      'display': ['DM Sans', ],
-      'body': ['"DM Sans"',],
+      'sans': ['Raleway', 'Raleway',],
+      'serif': ['Raleway', 'Raleway',],
+      'mono': ['Raleway', 'Raleway',],
+      'display': ['Raleway', ],
+      'body': ['"Raleway"',],
     }
   },
   variants: {
