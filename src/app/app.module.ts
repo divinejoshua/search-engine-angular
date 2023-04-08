@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 
+import { NavbarModule } from './navbar/navbar.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { SearchComponent } from './search/search.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NavbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
