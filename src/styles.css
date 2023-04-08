@@ -9,6 +9,7 @@
 *{
   /* font-size: 13px; */
   color: #333;
+  letter-spacing: 1px;
 }
 .form-btn{
   height: 30px;
@@ -18,6 +19,14 @@
   padding-right: 14px;
 }
 
+.form-control{
+  height: 50px;
+}
 .clearfix {
   overflow: auto;
+}
+
+.form-searchbox-home{
+  width: 100%;
+  text-decoration: none !important;
 }
