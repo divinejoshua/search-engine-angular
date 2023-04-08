@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  // Form group
+  homeForm = new FormGroup({
+    query:  new FormControl('', Validators.required),
+  });
 
+  constructor(private router: Router){}
+
+  onSubmit() :void {
+    console.log(this.homeForm.value)
+    this.router.navigate(
+      ['/search'],
+      { queryParams: { query: this.homeForm.value.query } }
+    );
+  }
 }
