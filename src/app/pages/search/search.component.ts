@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,13 +9,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent {
 
-  query : any;
+  // Form group
+  SearchForm = new FormGroup({
+    query:  new FormControl('', Validators.required),
+  });
 
-  constructor(private router: ActivatedRoute ){
-    this.query = ''
-  }
+  constructor(private route: ActivatedRoute, private router: Router){}
+
+
+  // On Submit
+    onSubmit() :void {
+      console.log(this.SearchForm.value.query)
+      this.router.navigate(
+        ['/search'],
+        { queryParams: { query: this.SearchForm.value.query } }
+      );
+    }
+
 
   ngOnInit() {
-    this.query = this.router.snapshot.queryParamMap.get('query')
+    this.SearchForm.value.query = this.route.snapshot.queryParamMap.get('query')
   }
 }
