@@ -25,7 +25,7 @@
 
 
 <!-- Search information -->
-  <p class="text-gray-500 text-xs mt-3" *ngIf="results.organic_results"> {{results.search_information.total_results}} results ({{results.search_information.time_taken_displayed}}) seconds</p>
+  <p class="text-gray-500 text-xs mt-3" *ngIf="results.organic_results"> {{results.search_information.total_results.toLocaleString("en-US")}} results ({{results.search_information.time_taken_displayed}}) seconds</p>
 
   <p class="mt-10 text-xs" style="text-align:center;" *ngIf="isLoading">Loading...</p>
   <p class="mt-10 text-xs text-danger" style="text-align:center;" *ngIf="isError">An Error occured</p>
