@@ -11,7 +11,9 @@ import { SearchService } from 'src/app/core/services/search/search.service';
 export class SearchComponent {
 
   query : any
-  results : []
+  results : any
+  isLoading : boolean
+  isError : boolean
 
   // Form group
   SearchForm = new FormGroup({
@@ -21,13 +23,19 @@ export class SearchComponent {
   // Constructor
   constructor(private route: ActivatedRoute, private router: Router, private SearchService : SearchService){
     this.results = []
+    this.isLoading = false
+    this.isError = false
   }
 
   // On Submit
    async onSubmit() {
-      console.log(this.SearchForm.value.query)
+      this.isLoading = true
+      this.isError = false
+      this.results = []
+      this.query = this.SearchForm.value.query
 
 
+      // Change the page URL
       this.router.navigate(
         ['/search'],
         { queryParams: { query: this.SearchForm.value.query } }
@@ -36,15 +44,18 @@ export class SearchComponent {
 
       try {
         // asynchronous operation
-        await this.SearchService.getSearchResults("/todo").subscribe(
+        await this.SearchService.getSearchResults(this.query).subscribe(
           //Success
           (response) =>{
-            console.log(response)
+            this.results = response
+            this.isLoading = false
           },
 
           // Error
           (error) => {
             console.log('error caught in component')
+            this.isLoading = false
+            this.isError = true
           },
         )
       }

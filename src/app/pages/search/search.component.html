@@ -24,50 +24,45 @@
   </ul>
 
 
+<!-- Search information -->
+  <p class="text-gray-500 text-xs mt-3" *ngIf="results.organic_results"> {{results.search_information.total_results}} results ({{results.search_information.time_taken_displayed}}) seconds</p>
 
-  <p class="text-gray-500 text-xs mt-3"> 12,000,000 results (0.91) seconds</p>
+  <p class="mt-10 text-xs" style="text-align:center;" *ngIf="isLoading">Loading...</p>
+  <p class="mt-10 text-xs text-danger" style="text-align:center;" *ngIf="isError">An Error occured</p>
 </section>
 
 
 
 <!-- Results  -->
-<section class="mt-1">
+<section class="mt-1"  *ngIf="results.organic_results">
   <!-- Left aside  -->
 
   <div class="grid grid-cols-3  gap-4">
-    <aside class="row-span-2 md:col-span-2 col-span-3">
+    <aside class="row-span-2 md:col-span-2 col-span-3 mb-4">
+
+    <!-- Images -->
+      <div class="grid cols-3 grid-flow-col gap-4 mt-4 mb-4">
+        <div
+          *ngFor="let image of results.inline_images; let index = index">
+          <a href="{{image.link}}">
+            <img class="border" src="{{image.image}}" alt="{{image.title}}" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Result list  -->
       <ul>
-        <li class="hover:bg-gray-100 transition duration-0 hover:duration-150 p-2 rounded mt-4">
-          <b class="text-bold text-sm text-blue-900">5 Ways to Convert a Value to String in JavaScript</b><br>
-          <a href="https://google.com" class="text-xs mt-2"> https://www.mcdonalds.com/us/en-us.html</a>
-          <p class="text-xs mt-2">Big Mac®, Filet-O-Fish®, & Quarter Pounder® With Cheese Included! At Part. McD. Types: Big Mac®, Filet-O-Fish®, Chicken McNuggets®, Quarter Pounder® Burger.</p>
-        </li>
-
-        <li class="hover:bg-gray-100 transition duration-0 hover:duration-150 p-2 rounded mt-4">
-          <b class="text-bold text-sm text-blue-900">5 Ways to Convert a Value to String in JavaScript</b><br>
-          <a href="https://google.com" class="text-xs mt-2"> https://www.mcdonalds.com/us/en-us.html</a>
-          <p class="text-xs mt-2">Big Mac®, Filet-O-Fish®, & Quarter Pounder® With Cheese Included! At Part. McD. Types: Big Mac®, Filet-O-Fish®, Chicken McNuggets®, Quarter Pounder® Burger.</p>
-        </li>
-
-        <li class="hover:bg-gray-100 transition duration-0 hover:duration-150 p-2 rounded mt-4">
-          <b class="text-bold text-sm text-blue-900">5 Ways to Convert a Value to String in JavaScript</b><br>
-          <a href="https://google.com" class="text-xs mt-2"> https://www.mcdonalds.com/us/en-us.html</a>
-          <p class="text-xs mt-2">Big Mac®, Filet-O-Fish®, & Quarter Pounder® With Cheese Included! At Part. McD. Types: Big Mac®, Filet-O-Fish®, Chicken McNuggets®, Quarter Pounder® Burger.</p>
-        </li>
+        <li
+          *ngFor="let answer of results.organic_results; let index = index"
+          class="hover:bg-gray-100 transition duration-0 hover:duration-150 p-2 rounded mt-2">
+          <a href="{{ answer.link}}">
+            <b class="text-bold text-sm text-blue-900">{{answer.title}}</b><br>
+            <p href="https://google.com" class="text-xs mt-2 text-gray-500"> {{answer.displayed_link}}</p>
+            <p class="text-xs mt-2">{{answer.snippet}}</p>
+          </a>
+      </li>
       </ul>
 
-
-      <!-- Pagination buttons  -->
-        <div class="mt-7 mb-5">
-          <!-- Next Button  -->
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded text-xs  drop-shadow-sm form-btn">
-          <i class="fa-solid fa-arrow-left text-regulartext mr-2"></i> Back
-        </button>
-
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded text-xs  drop-shadow-sm form-btn ml-4">
-          Next <i class="fa-solid fa-arrow-right text-regulartext mr-2"></i>
-        </button>
-      </div>
 
 
     </aside>
@@ -76,46 +71,20 @@
     <!-- Right Aside  -->
     <aside class="row-span-2  md:col-span-1 col-span-3">
      <!-- Related searches -->
-      <div class="mb-4">
+      <div class="mb-4" *ngIf="results.related_searches">
         <p class="text-xs mb-5">Related searches</p>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          mcdonalds burger
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          mcdonalds menu prices
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          mcdonalds breakfast
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          mcdonalds application
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          mcdonalds wifi
-        </button>
+        <a
+          *ngFor="let answer of results.related_searches; let index = index"
+          [routerLink]="['/search']" [queryParams]="{query: answer.query}">
+          <button
+            (click)="onSubmit()"
+            class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
+           {{answer.query}}
+          </button>
+        </a>
+
       </div>
 
-
-
-      <!-- People also search for -->
-      <div class="mt-5">
-        <p class="text-xs mb-5">People also search for</p>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs  form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          Burger King
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs  form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          Wendy's
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          Taco Bell
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          Chick‑fil‑A
-        </button>
-        <button class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
-          KFC
-        </button>
-      </div>
 
 
     </aside>
