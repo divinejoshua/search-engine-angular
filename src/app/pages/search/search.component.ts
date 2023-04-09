@@ -19,7 +19,6 @@ export class SearchComponent {
 
   // On Submit
     onSubmit() :void {
-      console.log(this.SearchForm.value.query)
       this.router.navigate(
         ['/search'],
         { queryParams: { query: this.SearchForm.value.query } }
@@ -29,5 +28,7 @@ export class SearchComponent {
 
   ngOnInit() {
     this.SearchForm.value.query = this.route.snapshot.queryParamMap.get('query')
+    console.log(this.SearchForm.value.query)
+
   }
 }
