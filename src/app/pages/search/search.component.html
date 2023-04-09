@@ -4,9 +4,9 @@
 <!-- header section  -->
 <section class="mt-6">
   <div class="relative">
-    <form>
+    <form [formGroup]="SearchForm" (ngSubmit)="onSubmit()">
       <!-- {{query}} -->
-      <input type="search" placeholder="Search DiFinder .." value={{query}}
+      <input type="search" placeholder="Search DiFinder .." formControlName="query" value={{query}}
       class="pl-14 pr-4 text-xs rounded-full border form-control form-searchbox-home drop-shadow-sm border border-gray-200 focus:outline-none focus:border-gray-100 focus:ring-gray-100 focus:ring-0.5 focus:border-100 focus:bg-gray-50 transition duration-0 hover:duration-150"
       >
     </form>
@@ -18,9 +18,9 @@
 
   <ul class="flex text-xs mt-5">
     <li class="text-underline text-xs border-default border-b-2 pb-3  pl-3 pr-3">All</li>
-    <li class="text-xs pl-3 pr-3"><a href="https://google.com/search?q={{query}}" target="_blank">Google</a></li>
-    <li class="text-xs pl-3 pr-3"><a href="https://bing.com/search?q={{query}}" target="_blank">Bing</a></li>
-    <li class="text-xs pl-3 pr-3"><a href="https://duckduckgo.com/?q={{query}}" target="_blank">Duck Duck Go</a></li>
+    <li class="text-xs pl-3 pr-3"><a href="https://google.com/search?q={{SearchForm.value.query}}" target="_blank">Google</a></li>
+    <li class="text-xs pl-3 pr-3"><a href="https://bing.com/search?q={{SearchForm.value.query}}" target="_blank">Bing</a></li>
+    <li class="text-xs pl-3 pr-3"><a href="https://duckduckgo.com/?q={{SearchForm.value.query}}" target="_blank">Duck Duck Go</a></li>
   </ul>
 
 
