@@ -12,7 +12,7 @@ export class SearchService {
   BASE_URL : string = "https://jsonplaceholder.typicode.com"
 
   // Get search results
-  getSearchResults(path:string){
+  getSearchResults(path:string) {
     return this.http.get(this.BASE_URL+path)
   }
 }
