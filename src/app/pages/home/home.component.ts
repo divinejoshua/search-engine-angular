@@ -16,7 +16,6 @@ export class HomeComponent {
   constructor(private router: Router){}
 
   onSubmit() :void {
-    console.log(this.homeForm.value)
     this.router.navigate(
       ['/search'],
       { queryParams: { query: this.homeForm.value.query } }

@@ -61,7 +61,6 @@ export class SearchComponent {
       }
       finally {
           // this will always get executed
-          console.log ("Done!")
       }
 
     }
