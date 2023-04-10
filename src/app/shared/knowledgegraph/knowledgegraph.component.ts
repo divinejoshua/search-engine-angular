@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-knowledgegraph',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./knowledgegraph.component.css']
 })
 export class KnowledgegraphComponent {
-
+  @Input() knowledgeGraph: any;
 }

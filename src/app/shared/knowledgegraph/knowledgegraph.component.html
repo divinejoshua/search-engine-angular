@@ -1,1 +1,9 @@
-<p>knowledgegraph works!</p>
+<div class="p-2">
+    <b class="text-bold">{{knowledgeGraph.title}}</b><br>
+    <small class="text-xs text-gray-400">{{knowledgeGraph.type}}</small><br>
+    <p href="https://google.com" class="text-xs mt-2 ">
+      {{knowledgeGraph.description}}
+    </p>
+
+    <p class="text-xs mt-2 text-gray-500">Source : <a href="{{knowledgeGraph.source.link}}" class="text-blue-700"> {{knowledgeGraph.source.name}} </a></p>
+</div>

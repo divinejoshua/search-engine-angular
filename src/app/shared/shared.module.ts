@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ResultlistComponent } from './resultlist/resultlist.component';
 import { InlineimagesComponent } from './inlineimages/inlineimages.component';
 import { KnowledgegraphComponent } from './knowledgegraph/knowledgegraph.component';
+import { AnswerboxComponent } from './answerbox/answerbox.component';
 
 
 
@@ -13,7 +14,8 @@ import { KnowledgegraphComponent } from './knowledgegraph/knowledgegraph.compone
     NavbarComponent,
     ResultlistComponent,
     InlineimagesComponent,
-    KnowledgegraphComponent
+    KnowledgegraphComponent,
+    AnswerboxComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { KnowledgegraphComponent } from './knowledgegraph/knowledgegraph.compone
     ResultlistComponent,
     InlineimagesComponent,
     KnowledgegraphComponent,
+    AnswerboxComponent,
   ],
 })
 export class SharedModule { }

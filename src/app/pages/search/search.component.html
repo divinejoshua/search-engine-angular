@@ -25,7 +25,7 @@
 
 
 <!-- Search information -->
-  <p class="text-gray-500 text-xs mt-3" *ngIf="results.organic_results"> {{results.search_information.total_results.toLocaleString("en-US")}} results ({{results.search_information.time_taken_displayed}}) seconds</p>
+  <p class="text-gray-500 text-xs mt-3 mb-3" *ngIf="results.organic_results"> {{results.search_information.total_results.toLocaleString("en-US")}} results ({{results.search_information.time_taken_displayed}}) seconds</p>
 
   <p class="mt-10 text-xs" style="text-align:center;" *ngIf="isLoading">Loading...</p>
   <p class="mt-10 text-xs text-danger" style="text-align:center;" *ngIf="isError">An Error occured</p>
@@ -41,11 +41,18 @@
     <aside class="row-span-2 md:col-span-2 col-span-3 mb-4">
 
     <!-- Images -->
-      <div class="">
+      <div class="" *ngIf="results.inline_images">
         <app-inlineimages [inlineImages]="results.inline_images" class="grid cols-3 grid-flow-col gap-4 mt-4 mb-4"></app-inlineimages>
       </div>
 
-      <!-- Result list  -->
+      <!-- {{results.answer_box.answers.answer}} -->
+      <!-- Knowledge Graph  -->
+      <app-knowledgegraph [knowledgeGraph]="results.knowledge_graph" *ngIf="results.knowledge_graph"></app-knowledgegraph>
+
+      <!-- Answer Box  -->
+      <app-answerbox [answerBox]="results.answer_box" *ngIf="results.answer_box?.answers.answer"></app-answerbox>
+
+      <!-- Organic Result list  -->
       <!-- <app-resultlist> is a component that takes all the results, loops through it and returns a list of results -->
       <ul>
         <app-resultlist [results]="results.organic_results"></app-resultlist>
@@ -60,15 +67,15 @@
     <aside class="row-span-2  md:col-span-1 col-span-3">
      <!-- Related searches -->
       <div class="mb-4" *ngIf="results.related_searches">
-        <p class="text-xs mb-5">Related searches</p>
+        <p class="text-xs mb-5 pl-3">Related searches</p>
         <a
           *ngFor="let answer of results.related_searches; let index = index"
           [routerLink]="['/search']" [queryParams]="{query: answer.query}">
-          <button
+          <p
             (click)="onSubmit()"
-            class="bg-white border border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
+            class="bg-white pt-5 pb-5 pr-3 pl-3 border-regulartext-500 text-regulartext rounded-full text-xs form-btn mb-3 mr-2 hover:bg-gray-100 transition duration-0 hover:duration-150">
            {{answer.query}}
-          </button>
+        </p>
         </a>
 
       </div>
