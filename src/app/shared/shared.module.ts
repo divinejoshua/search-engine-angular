@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultlistComponent } from './resultlist/resultlist.component';
 import { InlineimagesComponent } from './inlineimages/inlineimages.component';
+import { KnowledgegraphComponent } from './knowledgegraph/knowledgegraph.component';
 
 
 
@@ -11,7 +12,8 @@ import { InlineimagesComponent } from './inlineimages/inlineimages.component';
   declarations: [
     NavbarComponent,
     ResultlistComponent,
-    InlineimagesComponent
+    InlineimagesComponent,
+    KnowledgegraphComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { InlineimagesComponent } from './inlineimages/inlineimages.component';
     NavbarComponent,
     ResultlistComponent,
     InlineimagesComponent,
+    KnowledgegraphComponent,
   ],
 })
 export class SharedModule { }
