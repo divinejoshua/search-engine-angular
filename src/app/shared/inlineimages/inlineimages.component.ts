@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-inlineimages',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./inlineimages.component.css']
 })
 export class InlineimagesComponent {
+  @Input() inlineImages: any;
 
 }

@@ -1,1 +1,6 @@
-<p>inlineimages works!</p>
+<div
+  *ngFor="let image of inlineImages; let index = index">
+  <a href="{{image.link}}">
+    <img class="border" src="{{image.image}}" alt="{{image.title}}" />
+  </a>
+</div>

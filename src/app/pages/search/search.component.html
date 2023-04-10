@@ -41,13 +41,8 @@
     <aside class="row-span-2 md:col-span-2 col-span-3 mb-4">
 
     <!-- Images -->
-      <div class="grid cols-3 grid-flow-col gap-4 mt-4 mb-4">
-        <div
-          *ngFor="let image of results.inline_images; let index = index">
-          <a href="{{image.link}}">
-            <img class="border" src="{{image.image}}" alt="{{image.title}}" />
-          </a>
-        </div>
+      <div class="">
+        <app-inlineimages [inlineImages]="results.inline_images" class="grid cols-3 grid-flow-col gap-4 mt-4 mb-4"></app-inlineimages>
       </div>
 
       <!-- Result list  -->
