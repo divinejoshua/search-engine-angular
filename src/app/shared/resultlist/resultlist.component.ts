@@ -14,5 +14,6 @@ export class ResultlistComponent {
   }
 
   ngOnInit() {
+
   }
 }
