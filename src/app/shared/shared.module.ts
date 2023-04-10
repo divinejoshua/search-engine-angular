@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultlistComponent } from './resultlist/resultlist.component';
+import { InlineimagesComponent } from './inlineimages/inlineimages.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    ResultlistComponent
+    ResultlistComponent,
+    InlineimagesComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { ResultlistComponent } from './resultlist/resultlist.component';
   ],
   exports: [
     NavbarComponent,
-    ResultlistComponent
+    ResultlistComponent,
+    InlineimagesComponent,
   ],
 })
 export class SharedModule { }
