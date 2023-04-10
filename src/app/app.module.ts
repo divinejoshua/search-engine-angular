@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages//search/search.component';
 
-import { NavbarModule } from './shared/navbar/navbar.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { NavbarModule } from './shared/navbar/navbar.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
