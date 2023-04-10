@@ -50,7 +50,7 @@
       <app-knowledgegraph [knowledgeGraph]="results.knowledge_graph" *ngIf="results.knowledge_graph"></app-knowledgegraph>
 
       <!-- Answer Box  -->
-      <app-answerbox [answerBox]="results.answer_box" *ngIf="results.answer_box?.answers.answer"></app-answerbox>
+      <app-answerbox [answerBox]="results.answer_box" *ngIf="!results.knowledge_graph && results.answer_box?.answers[0].answer"></app-answerbox>
 
       <!-- Organic Result list  -->
       <!-- <app-resultlist> is a component that takes all the results, loops through it and returns a list of results -->
