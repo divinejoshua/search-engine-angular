@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-resultlist',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class ResultlistComponent {
 
+  @Input() results: any;
+
+  constructor(){
+      this.results = []
+  }
+
+  ngOnInit() {
+  }
 }
