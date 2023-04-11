@@ -5,7 +5,7 @@
 <section class="mt-40 max-w-screen-sm mx-auto">
     <div class="relative">
       <form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
-        <input type="search" placeholder="Search DiFinder .." autofocus formControlName="query"
+        <input type="search" placeholder="Search DiFinder .." autofocus formControlName="query" required="true"
         class="pl-14 pr-4 text-sm rounded-full border form-control form-searchbox-home drop-shadow-sm border border-gray-200 focus:outline-none focus:border-gray-100 focus:ring-gray-100 focus:ring-0.5 focus:border-100 focus:bg-gray-50 transition duration-0 hover:duration-150"
         >
       </form>

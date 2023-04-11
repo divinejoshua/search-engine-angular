@@ -16,9 +16,13 @@ export class HomeComponent {
   constructor(private router: Router){}
 
   onSubmit() :void {
-    this.router.navigate(
-      ['/search'],
-      { queryParams: { query: this.homeForm.value.query } }
-    );
+    // Check if query is not empty
+    if ((!this.homeForm.value.query || /^\s*$/.test(this.homeForm.value.query))==false) {
+      this.router.navigate(
+        ['/search'],
+        { queryParams: { query: this.homeForm.value.query } }
+      );
+    }
+
   }
 }

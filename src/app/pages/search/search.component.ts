@@ -21,7 +21,7 @@ export class SearchComponent {
   });
 
   // Constructor
-  constructor(private route: ActivatedRoute, private router: Router, private SearchService : SearchService){
+  constructor(private router: Router, private route: ActivatedRoute, private SearchService : SearchService){
     this.results = []
     this.isLoading = false
     this.isError = false
@@ -33,6 +33,9 @@ export class SearchComponent {
       this.isError = false
       this.results = []
       this.query = this.SearchForm.value.query
+
+      // Check if query is valid
+       if (!this.searchQueryExist(this.query)){ return }
 
 
       // Change the page URL
@@ -64,6 +67,18 @@ export class SearchComponent {
       }
 
     }
+
+    // Check if search value in the URL is empty
+    searchQueryExist(strValue: any): boolean {
+      if ((!strValue || /^\s*$/.test(strValue))==true) {
+        this.router.navigate(
+          ['/'],
+        );
+        return false
+      }
+      return true
+    }
+
 
 
   ngOnInit() {
