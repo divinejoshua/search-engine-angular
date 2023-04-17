@@ -56,7 +56,7 @@ export class SearchComponent {
 
           // Error
           (error) => {
-            console.log('error caught in component ')
+            console.log('error  caught in component ')
             this.isLoading = false
             this.isError = true
           },
