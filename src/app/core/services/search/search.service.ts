@@ -9,7 +9,7 @@ export class SearchService {
 
   constructor(private http:HttpClient) { }
 
-  // Base Url
+  // Base Url from environment variable
   BASE_URL : string = environment.domain
 
 
@@ -17,7 +17,8 @@ export class SearchService {
   getSearchResults(query:string) {
     return this.http.get(this.BASE_URL, {params:{
       api_key : environment.apiKey,
-      q: query
+      q: query,
+      location: "United+States",
     }})
   }
 }
